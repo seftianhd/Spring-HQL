@@ -11,13 +11,17 @@ public class Produk {
     private String name;
     private Double price;
 
+    @ManyToOne
+    private Lembaga lembaga;
+
     public Produk() {
     }
 
-    public Produk(long id, String name, double price) {
+    public Produk(Long id, String name, Double price, Lembaga lembaga) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.lembaga = lembaga;
     }
 
     public long getId() {
@@ -42,5 +46,13 @@ public class Produk {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Lembaga getLembaga() {
+        return lembaga;
+    }
+
+    public void setLembaga(Lembaga lembaga) {
+        this.lembaga = lembaga;
     }
 }
