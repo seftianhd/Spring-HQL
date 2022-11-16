@@ -1,27 +1,27 @@
 package pt.olshop.TokoIjo.models.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "tabel_produk")
-public class Produk {
+public class Produk{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String name;
-    private Double price;
+    private double price;
 
-    @ManyToOne
-    private Lembaga lembaga;
+//    @ManyToOne
+//    private Lembaga lembaga;
 
     public Produk() {
     }
 
-    public Produk(Long id, String name, Double price, Lembaga lembaga) {
+    public Produk(long id, String name, double price) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.lembaga = lembaga;
     }
 
     public long getId() {
@@ -46,13 +46,5 @@ public class Produk {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public Lembaga getLembaga() {
-        return lembaga;
-    }
-
-    public void setLembaga(Lembaga lembaga) {
-        this.lembaga = lembaga;
     }
 }

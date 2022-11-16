@@ -1,10 +1,7 @@
 package pt.olshop.TokoIjo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pt.olshop.TokoIjo.models.entities.Produk;
 import pt.olshop.TokoIjo.services.ProdukService;
 
@@ -24,4 +21,14 @@ public class ProdukController {
     public Produk cariSatu(@PathVariable("id") Long id){
         return produkService.CariPakaiId(id);
     }
+
+    @PostMapping
+    public Produk simpan(@RequestBody Produk produk){
+        return produkService.simpan(produk);
+    }
+
+//    @PostMapping
+//    public Produk sa(@RequestBody Produk produk){
+//        return produkService.simpa(produk);
+//    }
 }
