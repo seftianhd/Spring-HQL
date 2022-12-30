@@ -1,9 +1,6 @@
 package pt.olshop.TokoIjo.services;
-
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.data.jpa.provider.HibernateUtils;
 import org.springframework.stereotype.Service;
 import pt.olshop.TokoIjo.models.entities.Produk;
 import pt.olshop.TokoIjo.models.repositori.ProdukRepositori;
