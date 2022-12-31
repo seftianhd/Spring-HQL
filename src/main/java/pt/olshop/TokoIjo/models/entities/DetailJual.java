@@ -1,5 +1,8 @@
 package pt.olshop.TokoIjo.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,11 +14,14 @@ public class DetailJual implements Serializable {
     private int kuantitas;
     private int hargajual;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "nofraktur",referencedColumnName = "nofraktur")
+    @JsonManagedReference
+//    @JsonBackReference
     private TransaksiJual transaksiJual;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
     @JoinColumn(name = "idbarang",referencedColumnName = "idbarang")
     private Barang barang;
 

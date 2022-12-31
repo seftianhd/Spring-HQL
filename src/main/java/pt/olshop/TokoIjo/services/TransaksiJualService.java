@@ -31,4 +31,8 @@ public class TransaksiJualService {
 
         return transaksiJual;
     }
+
+    public Iterable<TransaksiJual> cari(){
+        return transaksiJualRepositori.carisemua();
+    }
 }

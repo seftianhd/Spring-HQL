@@ -1,5 +1,8 @@
 package pt.olshop.TokoIjo.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -17,7 +20,9 @@ public class TransaksiJual implements Serializable {
     private int bayar;
     private int kembalian;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "transaksiJual")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "transaksiJual",fetch = FetchType.LAZY)
+    @JsonBackReference
+//    @JsonManagedReference
     private List<DetailJual> detailJuals;
 
     public TransaksiJual() {
