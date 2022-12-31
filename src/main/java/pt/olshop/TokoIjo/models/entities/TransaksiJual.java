@@ -1,11 +1,13 @@
 package pt.olshop.TokoIjo.models.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "penjualan")
-public class TransaksiJual {
+public class TransaksiJual implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long nofraktur;
@@ -15,18 +17,20 @@ public class TransaksiJual {
     private int bayar;
     private int kembalian;
 
-//    @OneToMany(mappedBy = "transaksiJual")
-//    private Set<DetailJual> detailJuals;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "transaksiJual")
+    private List<DetailJual> detailJuals;
 
     public TransaksiJual() {
     }
 
-    public TransaksiJual(int date, int time, int total, int bayar, int kembalian) {
+    public TransaksiJual(long nofraktur, int date, int time, int total, int bayar, int kembalian, List<DetailJual> detailJuals) {
+        this.nofraktur = nofraktur;
         this.date = date;
         this.time = time;
         this.total = total;
         this.bayar = bayar;
         this.kembalian = kembalian;
+        this.detailJuals = detailJuals;
     }
 
     public long getNofraktur() {
@@ -71,5 +75,13 @@ public class TransaksiJual {
 
     public void setKembalian(int kembalian) {
         this.kembalian = kembalian;
+    }
+
+    public List<DetailJual> getDetailJuals() {
+        return detailJuals;
+    }
+
+    public void setDetailJuals(List<DetailJual> detailJuals) {
+        this.detailJuals = detailJuals;
     }
 }

@@ -26,6 +26,7 @@ public class AdminService {
 
     public Admin simpan(Admin admin){
         EntityManager em = emf.createEntityManager();
+
         em.getTransaction().begin();
         em.persist(admin);
         em.getTransaction().commit();

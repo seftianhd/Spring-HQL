@@ -1,23 +1,30 @@
 package pt.olshop.TokoIjo.models.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class DetailJual {
+public class DetailJual implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idJual;
     private int kuantitas;
     private int hargajual;
 
-    @ManyToOne
-    @JoinColumn(name = "nofraktur",insertable = false,updatable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "nofraktur",referencedColumnName = "nofraktur")
     private TransaksiJual transaksiJual;
 
-    public DetailJual(long idJual, int kuantitas, int hargajual, TransaksiJual transaksiJual) {
+    @OneToOne
+    @JoinColumn(name = "idbarang",referencedColumnName = "idbarang")
+    private Barang barang;
+
+    public DetailJual(long idJual, int kuantitas, int hargajual, TransaksiJual transaksiJual, Barang barang) {
         this.idJual = idJual;
         this.kuantitas = kuantitas;
         this.hargajual = hargajual;
         this.transaksiJual = transaksiJual;
+        this.barang = barang;
     }
 
     public DetailJual() {
@@ -49,5 +56,13 @@ public class DetailJual {
 
     public void setTransaksiJual(TransaksiJual transaksiJual) {
         this.transaksiJual = transaksiJual;
+    }
+
+    public Barang getBarang() {
+        return barang;
+    }
+
+    public void setBarang(Barang barang) {
+        this.barang = barang;
     }
 }

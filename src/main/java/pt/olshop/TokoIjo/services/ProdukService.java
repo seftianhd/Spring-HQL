@@ -27,7 +27,7 @@ public class ProdukService {
         em.getTransaction().begin();
         em.persist(produk1);
         em.getTransaction().commit();
-        emf.close();
+//        emf.close();
         return produk;
     }
 

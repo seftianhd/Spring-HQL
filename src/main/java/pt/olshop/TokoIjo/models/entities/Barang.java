@@ -1,10 +1,11 @@
 package pt.olshop.TokoIjo.models.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "tabel_barang")
-public class Barang {
+public class Barang implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idbarang;
@@ -16,7 +17,8 @@ public class Barang {
     public Barang() {
     }
 
-    public Barang(String namabarang, int hargabeli, int hargajual, int stok) {
+    public Barang(long idbarang, String namabarang, int hargabeli, int hargajual, int stok) {
+        this.idbarang = idbarang;
         this.namabarang = namabarang;
         this.hargabeli = hargabeli;
         this.hargajual = hargajual;
